@@ -1,0 +1,27 @@
+<div *ngIf="companyInfo" class="company-info">
+  <h1>{{companyInfo.name}}</h1>
+  <p>{{companyInfo.address}}</p>
+  <div>{{companyInfo.phones.join(', ')}}</div>
+</div>
+<table *ngIf="products.length !== 0; else elseBlock">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Item</th>
+      <th>Count</th>
+      <th>Price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let product of products; let i = index">
+      <td>{{ i + 1 }}</td>
+      <td>{{ product.name }}</td>
+      <td>{{ product.count }}</td>
+      <td>{{ product.price }}</td>
+    </tr>
+  </tbody>
+  <tr>
+    <th>Sum: {{ sum }}</th>
+  </tr>
+</table>
+<ng-template #elseBlock> No items </ng-template>
